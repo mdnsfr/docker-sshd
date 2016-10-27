@@ -29,6 +29,6 @@ docker run -it --rm \
   -e "USERID=1005" \
   -e "GROUPID=1020" \
   -e "USERDIR=/srv/myhome" \
-  -e "SUDO=nopasswd" \
+  -e "SUDOER=nopasswd" \
   mdns/sshd
 ```
