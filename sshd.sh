@@ -42,5 +42,18 @@ then
   echo "$PUBKEY" > "$USERDIR/.ssh/authorized_keys"
 fi
 
+# Sudo
+sed -i '/'"$USERNAME"' ALL=.*/d' /etc/sudoers
+case "$SUDOER" in
+  yes)
+    echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
+    ;;
+  nopasswd)
+    echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+    ;;
+  *)
+    echo "No sudo power allowed"
+esac
+
 service ssh start
 syslogd -n -O /dev/stdout

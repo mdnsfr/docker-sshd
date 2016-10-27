@@ -11,6 +11,7 @@ The configuration is done via ENV variables
 - USERID : posix uid (default=1000)
 - GROUPID : posix gid (default=1000)
 - USERDIR : account home directory (default=/data)
+- SUDOER : Default is "no", other values are "nopasswd" and "yes"
 
 Both PASSWORD and PUBKEY variables are optionnal, but a SSHD server without any credential would be useless. Maybe you want to use this docker image to try hacking OpenSSH daemon.
 
@@ -28,5 +29,6 @@ docker run -it --rm \
   -e "USERID=1005" \
   -e "GROUPID=1020" \
   -e "USERDIR=/srv/myhome" \
+  -e "SUDO=nopasswd" \
   mdns/sshd
 ```
